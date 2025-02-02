@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farewell Celebration Invitation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hightower+Text&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #1a1a40, #009ffd);
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        /* Smaller Card */
+        .card {
+            background: white;
+            width: 80vw;
+            max-width: 500px;
+            height: auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 15px 30px rgba(255, 215, 0, 0.3);
+            border: 3px solid gold;
+            position: absolute;
+            opacity: 0;
+            animation: paperPlaneFly 6s ease-out forwards;
+            transform-origin: top left;
+            text-align: center;
+        }
+
+        @keyframes paperPlaneFly {
+            0% {
+                transform: rotate(30deg) translate(-100vw, -100vh);
+                opacity: 0;
+            }
+            100% {
+                transform: rotate(0) translate(0, 0);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: darkred;
+            font-family: 'Hightower Text', serif;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: #ff4500;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 16px; /* Smaller text */
+            line-height: 1.5;
+            color: #444;
+            font-family: 'Monotype Corsiva', cursive;
+        }
+
+        /* Floating Balloons */
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 30px;
+            height: 40px;
+            background: red;
+            border-radius: 50%;
+            animation: floatBalloons 6s linear infinite;
+        }
+
+        @keyframes floatBalloons {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-80vh) scale(1.1); }
+            100% { transform: translateY(-100vh) scale(1); }
+        }
+
+        /* Sparkling Stars */
+        .star {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: gold;
+            box-shadow: 0 0 8px gold;
+            animation: twinkle 2s infinite;
+            border-radius: 50%;
+        }
+
+        @keyframes twinkle {
+            0% { transform: scale(0.5); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.5); opacity: 0.5; }
+        }
+
+        /* Confetti Effect */
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: gold;
+            opacity: 0.8;
+            animation: fall linear infinite;
+            border-radius: 50%;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Invitation Card -->
+    <div class="card">
+        <h2>From N.V.S Public School</h2>
+        <h1>Farewell Celebration Invitation For Nisha</h1>
+        <p>
+            At this important juncture of your school life, we are eager to give you our best wishes.<br><br>
+            Class 12 is over! Now it's time for celebration! It's time to gather the memories of school. From the walls of the school to the classrooms, it's time to cherish the memories residing in every corner.<br><br>
+            Make these moments even more special by coming to our farewell ceremony. This moment of saying goodbye is definitely a bit emotional, but the memories will always remain in our hearts.<br><br>
+            Your presence will make our farewell ceremony even more memorable.<br><br>
+            We are inviting you to bid farewell and request you to come and grace the program and seek blessings from the teachers for your future endeavors.
+        </p>
+    </div>
+
+    <!-- JavaScript for Animations -->
+    <script>
+        function createBalloons() {
+            for (let i = 0; i < 5; i++) {
+                let balloon = document.createElement("div");
+                balloon.classList.add("balloon");
+                balloon.style.left = Math.random() * 100 + "vw";
+                balloon.style.backgroundColor = ["red", "blue", "green", "purple", "orange"][Math.floor(Math.random() * 5)];
+                balloon.style.animationDuration = Math.random() * 3 + 4 + "s";
+                document.body.appendChild(balloon);
+
+                setTimeout(() => {
+                    balloon.remove();
+                }, 7000);
+            }
+        }
+
+        function createStars() {
+            for (let i = 0; i < 10; i++) {
+                let star = document.createElement("div");
+                star.classList.add("star");
+                star.style.left = Math.random() * 100 + "vw";
+                star.style.top = Math.random() * 100 + "vh";
+                star.style.animationDuration = Math.random() * 2 + 1 + "s";
+                document.body.appendChild(star);
+
+                setTimeout(() => {
+                    star.remove();
+                }, 4000);
+            }
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+            confetti.style.left = Math.random() * 100 + "vw";
+            confetti.style.animationDuration = Math.random() * 2 + 3 + "s";
+            confetti.style.backgroundColor = ["gold", "red", "blue", "purple", "green", "orange"][Math.floor(Math.random() * 6)];
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+
+        function startPartyAnimation() {
+            setInterval(createBalloons, 2000);
+            setInterval(createStars, 3000);
+            setInterval(createConfetti, 200);
+            setTimeout(() => clearInterval(startPartyAnimation), 15000);
+        }
+
+        window.onload = startPartyAnimation;
+    </script>
+
+</body>
+</html>
